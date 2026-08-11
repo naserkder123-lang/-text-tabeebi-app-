@@ -1,1 +1,152 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#0b7a75">
+<title>طبيبي وصيدليتي — نموذج مرئي</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
+*{box-sizing:border-box} body{margin:0;background:#eef6f5;font-family:Cairo,Tahoma,sans-serif;color:#173b3a}
+.app{max-width:430px;margin:auto;min-height:100vh;background:#f8fcfb;box-shadow:0 0 35px #0b514d18}
+.top{padding:20px 18px 15px;background:linear-gradient(145deg,#087b75,#12a79d);color:white;border-radius:0 0 28px 28px}
+.brand{display:flex;align-items:center;gap:12px}.logo{width:52px;height:52px;border-radius:17px;background:#ffffff25;display:grid;place-items:center;font-size:29px;border:1px solid #ffffff40}.brand b{font-size:21px}.brand small{display:block;opacity:.85;margin-top:2px}
+.search{margin-top:17px;background:#fff;color:#78918f;border-radius:16px;padding:13px 15px;display:flex;gap:10px;align-items:center;box-shadow:0 8px 20px #005d5718}.search input{border:0;outline:0;width:100%;font-family:inherit;font-size:14px}
+.content{padding:18px 16px 92px}.hero{background:linear-gradient(135deg,#e3f7f4,#f5fbff);border:1px solid #d5ebe8;border-radius:23px;padding:17px;display:flex;gap:12px;align-items:center}.hero .pulse{width:62px;height:62px;border-radius:20px;background:#0b8179;color:#fff;display:grid;place-items:center;font-size:31px}.hero b{font-size:17px}.hero p{margin:4px 0 0;color:#64817f;font-size:12px;line-height:1.6}
+.section{display:flex;justify-content:space-between;align-items:center;margin:22px 2px 11px}.section b{font-size:16px}.section span{font-size:11px;color:#0b8179}
+.roles{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.role{background:white;border:1px solid #e0eeec;border-radius:18px;padding:14px 7px;text-align:center;cursor:pointer;box-shadow:0 5px 14px #155e5910}.role i{font-style:normal;font-size:27px;display:block;margin-bottom:5px}.role b{font-size:12px}
+.specialties{display:flex;gap:10px;overflow:auto;padding-bottom:4px}.spec{min-width:82px;background:white;border:1px solid #e0eeec;border-radius:17px;padding:12px 7px;text-align:center}.spec i{font-style:normal;font-size:25px;display:block}.spec span{font-size:10px;color:#587472}
+.doctors{display:grid;gap:10px}.doctor{background:white;border:1px solid #e0eeec;border-radius:19px;padding:13px;display:flex;gap:11px;align-items:center}.avatar{width:51px;height:51px;border-radius:16px;background:#dff3f0;display:grid;place-items:center;font-size:25px}.doctor .info{flex:1}.doctor b{font-size:13px}.doctor small{display:block;color:#718986;font-size:10px;margin-top:3px}.rating{color:#e0a52c;font-size:11px;margin-top:4px}.book{border:0;background:#0b8179;color:white;border-radius:11px;padding:8px 10px;font-family:inherit;font-size:10px;cursor:pointer}
+.quick{display:grid;grid-template-columns:1fr 1fr;gap:10px}.quick div{padding:14px;border-radius:18px;background:#fff;border:1px solid #e0eeec;cursor:pointer}.quick i{font-style:normal;font-size:23px}.quick b{display:block;font-size:12px;margin-top:5px}.quick small{color:#78908e;font-size:9px}
+.pharm{background:linear-gradient(135deg,#e9f8ee,#fff);border:1px solid #d8ecdf;border-radius:21px;padding:15px}.pharm h3{margin:0;font-size:15px}.pharm p{font-size:10px;color:#6a817d;margin:4px 0 12px}.pharm button{width:100%;padding:11px;border:0;border-radius:12px;background:#17834c;color:white;font-family:inherit;font-weight:700}
+.bottom{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(430px,100%);height:73px;background:#ffffffee;backdrop-filter:blur(12px);border-top:1px solid #dceae8;display:grid;grid-template-columns:repeat(4,1fr);padding:7px 8px}.nav{text-align:center;color:#76908d;font-size:10px;cursor:pointer}.nav.active{color:#087b75;font-weight:800}.nav i{font-style:normal;font-size:22px;display:block}.toast{position:fixed;bottom:88px;left:50%;transform:translateX(-50%) translateY(15px);opacity:0;background:#173b3a;color:#fff;padding:11px 15px;border-radius:13px;font-size:11px;transition:.25s;pointer-events:none}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.modal{display:none;position:fixed;inset:0;background:#092d2b66;align-items:flex-end;justify-content:center;z-index:10}.modal.show{display:flex}.sheet{width:min(430px,100%);background:#fff;border-radius:26px 26px 0 0;padding:20px}.sheet h3{margin:0 0 12px}.choice{display:grid;gap:10px}.choice button{padding:14px;border:1px solid #dbeae8;background:#f8fcfb;border-radius:15px;font-family:inherit;text-align:right;font-weight:700}.close{margin-top:10px;width:100%;padding:11px;border:0;border-radius:12px;background:#eaf2f1;font-family:inherit}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top">
+  <div class="brand"><div class="logo">⚕</div><div><b>طبيبي وصيدليتي</b><small>منصتك الصحية الذكية</small></div></div>
+  <div class="search">⌕ <input id="search" placeholder="ابحث عن طبيب، تخصص أو دواء"></div>
+</header>
 
+<main class="content">
+  <section class="hero"><div class="pulse">✚</div><div><b>صحتك في مكان واحد</b><p>احجز طبيبك، أرسل وصفتك للصيدلية وتابع طلباتك بسهولة.</p></div></section>
+
+  <div class="section"><b>خدماتك الصحية</b><span>مسارات مستقلة تمامًا</span></div>
+  <div class="roles">
+    <div class="role" onclick="openModal('المريض')"><i>👤</i><b>أنا مريض</b></div>
+    <div class="role" onclick="openModal('الطبيب')"><i>🩺</i><b>أنا طبيب</b></div>
+    <div class="role" onclick="openModal('الصيدلي')"><i>💊</i><b>أنا صيدلي</b></div>
+  </div>
+  <div class="section"><b>بعد حجز الطبيب المتخصص</b><span>مساران منفصلان</span></div>
+  <div class="quick">
+    <div onclick="openDoctorPatient()"><i>🩺</i><b>الطبيب ↔ المريض</b><small>حجز، كشف، وصفة وسجل طبي خاص</small></div>
+    <div onclick="openSalesPoint()"><i>🏪</i><b>نقاط البيع</b><small>جملة أو صرف وصفة حسب إعداد نقطة البيع</small></div>
+  </div>
+
+  <div class="section"><b>التخصصات</b><span>عرض الكل ←</span></div>
+  <div class="specialties">
+    <div class="spec"><i>🤰</i><span>نساء وولادة</span></div>
+    <div class="spec"><i>👶</i><span>أطفال</span></div>
+    <div class="spec"><i>🫀</i><span>باطنية</span></div>
+    <div class="spec"><i>🦷</i><span>أسنان</span></div>
+    <div class="spec"><i>👁️</i><span>عيون</span></div>
+  </div>
+
+  <div class="section"><b>أطباء مقترحون</b><span>الأعلى تقييمًا</span></div>
+  <div class="doctors" id="doctors">
+    <div class="doctor" data-name="د. أحمد محمد أطفال"><div class="avatar">👨‍⚕️</div><div class="info"><b>د. أحمد محمد</b><small>أخصائي طب الأطفال • الخرطوم</small><div class="rating">★★★★★ 4.9</div></div><button class="book" onclick="book('د. أحمد محمد')">احجز</button></div>
+    <div class="doctor" data-name="د. سارة علي نساء وولادة"><div class="avatar">👩‍⚕️</div><div class="info"><b>د. سارة علي</b><small>نساء وولادة • ود مدني</small><div class="rating">★★★★★ 4.8</div></div><button class="book" onclick="book('د. سارة علي')">احجز</button></div>
+    <div class="doctor" data-name="د. محمد حسن باطنية"><div class="avatar">👨‍⚕️</div><div class="info"><b>د. محمد حسن</b><small>باطنية • أم درمان</small><div class="rating">★★★★☆ 4.7</div></div><button class="book" onclick="book('د. محمد حسن')">احجز</button></div>
+  </div>
+
+  <div class="section"><b>الخدمات السريعة</b></div>
+  <div class="quick">
+    <div onclick="toast('فتح سجل الوصفات')"><i>📋</i><b>وصفاتي الطبية</b><small>الوصفات والـ QR</small></div>
+    <div onclick="toast('فتح طلباتي')"><i>📦</i><b>طلباتي</b><small>تتبع حالة الطلب</small></div>
+    <div onclick="toast('تشغيل البحث الصوتي')"><i>🎙️</i><b>بحث صوتي</b><small>ابحث بصوتك</small></div>
+    <div onclick="toast('فتح المساعد الذكي')"><i>✨</i><b>المساعد الذكي</b><small>ساعدني في اختيار التخصص</small></div>
+  </div>
+
+  <div class="section"><b>فصل البيانات والخصوصية</b><span>صلاحيات دقيقة</span></div>
+  <div class="pharm"><h3>🔐 كل علاقة لها مساحة مستقلة</h3><p>المريض يرى ملفه مع طبيبه فقط. الصيدلي يرى عملاء نقطة بيعه فقط. المدير يدير الحسابات والرسوم وحالة الخدمة دون صلاحية افتراضية لقراءة المحتوى الطبي الخاص.</p><button onclick="openSecurity()">عرض نموذج الصلاحيات</button></div>
+
+  <div class="section"><b>الخدمات الذكية</b><span>خصوصية وتحكم</span></div>
+  <div class="quick">
+    <div onclick="openPrivacy()"><i>🔐</i><b>خصوصيتي</b><small>ملف منفصل لكل علاقة</small></div>
+    <div onclick="openWholesale()"><i>🏪</i><b>نقطة البيع</b><small>جملة أو صرف روشتة حسب اختيار الصيدلي</small></div>
+    <div onclick="openReferral()"><i>🎁</i><b>شارك التطبيق</b><small>5 تنزيلات = شهر مجاني</small></div>
+    <div onclick="openPayment()"><i>💳</i><b>الدفع</b><small>يبدأ من 1000 جنيه عند الإجراء النهائي</small></div>
+  </div>
+
+  <div class="section"><b>صيدليتي</b><span>طلبات الأدوية</span></div>
+  <div class="pharm"><h3>💊 اختر نموذج العمل</h3><p>الصيدلي يحدد هل نقطة البيع للجملة، أو للصرف بالروشتة، أو للخدمتين معًا. وتبقى بيانات كل عميل معزولة.</p><button onclick="openWholesale()">اختيار نقطة البيع</button></div>
+
+  <div class="section"><b>تواصل مباشر وآمن</b><span>حسب الصلاحية</span></div>
+  <div class="quick">
+    <div onclick="contact('واتساب')"><i>💬</i><b>واتساب</b><small>بين العميل والطبيب أو الصيدلي</small></div>
+    <div onclick="contact('مكالمة')"><i>📞</i><b>مكالمة</b><small>اتصال مباشر عند السماح به</small></div>
+    <div onclick="contact('الإدارة')"><i>🛡️</i><b>المدير</b><small>تواصل إداري دون الاطلاع على الخصوصيات</small></div>
+    <div onclick="openAdmin()"><i>⚙️</i><b>إدارة المنصة</b><small>إعداداتك أنت فقط</small></div>
+  </div>
+</main>
+
+<nav class="bottom">
+  <div class="nav active" onclick="nav(this)"><i>⌂</i>الرئيسية</div>
+  <div class="nav" onclick="nav(this)"><i>🩺</i>الأطباء</div>
+  <div class="nav" onclick="nav(this)"><i>🏪</i>نقاط البيع</div>
+  <div class="nav" onclick="nav(this)"><i>👤</i>حسابي</div>
+</nav>
+</div>
+
+<div style="max-width:430px;margin:-75px auto 0;padding:0 16px 95px;color:#718986;font-size:9px;text-align:center">
+  النموذج يوضح تجربة الاستخدام. حماية البيانات الطبية والدفع الحقيقي تحتاج خادمًا آمنًا ومصادقة وصلاحيات وقاعدة بيانات؛ localStorage وحده لا يكفي لأمان حقيقي.
+</div>
+
+<div class="toast" id="toast"></div>
+<div class="modal" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="sheet"><h3 id="modalTitle">اختيار</h3><div class="choice" id="choices"></div><button class="close" onclick="closeModal()">إغلاق</button></div>
+</div>
+
+<script>
+const toastEl=document.getElementById('toast');
+function toast(t){toastEl.textContent=t;toastEl.classList.add('show');setTimeout(()=>toastEl.classList.remove('show'),1800)}
+function book(name){toast('تم اختيار '+name+' — اختر الموعد')}
+function nav(el){document.querySelectorAll('.nav').forEach(x=>x.classList.remove('active'));el.classList.add('active');toast(el.textContent.trim())}
+function openModal(role){
+ document.getElementById('modalTitle').textContent='الدخول كـ '+role;
+ const c=document.getElementById('choices');
+ c.innerHTML='<button onclick="toast(\'تم فتح التسجيل\');closeModal()">تسجيل حساب جديد</button><button onclick="toast(\'تم فتح تسجيل الدخول\');closeModal()">لدي حساب بالفعل</button>';
+ document.getElementById('modal').classList.add('show');
+}
+function openDoctorPatient(){
+ setModal('مسار الطبيب والمريض',[
+ ['حجز موعد',"toast('الحجز يفتح علاقة خاصة بين المريض وطبيبه');closeModal()"],
+ ['الوصفة الطبية',"toast('الوصفة تبقى ضمن علاقة الطبيب والمريض وتنتقل للصيدلية المختارة فقط');closeModal()"],
+ ['التواصل',"toast('واتساب أو مكالمة بين الطرفين حسب الإعداد');closeModal()"]
+ ]);
+}
+function openSalesPoint(){
+ setModal('نقاط البيع',[
+ ['بيع بالجملة',"toast('نقطة بيع بالجملة');closeModal()"],
+ ['صرف وصفات',"toast('صرف وصفات من الوصفات المصرح بها فقط');closeModal()"],
+ ['جملة + وصفات',"toast('يمكن للصيدلي اختيار النموذجين');closeModal()"]
+ ]);
+}
+function openSecurity(){
+ setModal('نموذج الصلاحيات',[
+ ['المدير',"toast('إدارة الحسابات والرسوم والحالة دون قراءة المحتوى الطبي افتراضيًا');closeModal()"],
+ ['الطبيب',"toast('الوصول إلى مرضاه ومواعيده ووصفاته فقط');closeModal()"],
+ ['الصيدلي',"toast('الوصول إلى عملاء نقطة بيعه وطلباتهم فقط');closeModal()"],
+ ['المريض',"toast('الوصول إلى ملفه وعلاقاته المصرح بها فقط');closeModal()"]
+ ]);
+}
+function closeModal(){document.getElementById('modal').classList.remove('show')}
+document.getElementById('search').addEventListener('input',e=>{
+ const q=e.target.value.trim();
+ document.querySelectorAll('.doctor').forEach(d=>d.style.display=(!q||d.dataset.name.includes(q))?'flex':'none');
+});
+</script>
+</body>
+</html>
